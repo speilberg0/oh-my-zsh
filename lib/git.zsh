@@ -5,16 +5,19 @@ function git_prompt_info() {
 }
 
 
-# Checks if working tree is dirty
-parse_git_dirty() {
-  local SUBMODULE_SYNTAX=''
-  if [[ $POST_1_7_2_GIT -gt 0 ]]; then
-        SUBMODULE_SYNTAX="--ignore-submodules=dirty"
+parse_git_dirty () {
+  gitstat=$(git status 2>/dev/null | grep '\(# Untracked\|# Changes\|# Changed but not updated:\)')
+
+  if [[ $(echo ${gitstat} | grep -c "^# Changes to be committed:$") > 0 ]]; then
+  echo -n "$ZSH_THEME_GIT_PROMPT_DIRTY"
   fi
-  if [[ -n $(git status -s ${SUBMODULE_SYNTAX}  2> /dev/null) ]]; then
-    echo "$ZSH_THEME_GIT_PROMPT_DIRTY"
-  else
-    echo "$ZSH_THEME_GIT_PROMPT_CLEAN"
+
+  if [[ $(echo ${gitstat} | grep -c "^\(# Untracked files:\|# Changed but not updated:\|# Changes not staged for commit:\)$") > 0 ]]; then
+  echo -n "$ZSH_THEME_GIT_PROMPT_UNTRACKED"
+  fi
+
+  if [[ $(echo ${gitstat} | grep -v '^$' | wc -l | tr -d ' ') == 0 ]]; then
+  echo -n "$ZSH_THEME_GIT_PROMPT_CLEAN"
   fi
 }
 
@@ -71,7 +74,7 @@ git_prompt_status() {
 
 #compare the provided version of git to the version installed and on path
 #prints 1 if input version <= installed version
-#prints -1 otherwise 
+#prints -1 otherwise
 function git_compare_version() {
   local INPUT_GIT_VERSION=$1;
   local INSTALLED_GIT_VERSION
