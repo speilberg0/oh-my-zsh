@@ -175,9 +175,9 @@ done
 
 source ~/.oh-my-zsh/lib/spectrum.zsh
 
-f1='[38;5;124m'
-f2='[38;5;034m'
-f3='[38;5;184m'
+f1='[38;5;197m'
+f2='[38;5;118m'
+f3='[38;5;190m'
 f4='[38;5;039m'
 f7='[00m'
 
@@ -199,6 +199,6 @@ echo "$f4  ;:::::::::t33V $f3;EEEttttt::::t3        ${f1}DE: ${f7}$de"
 echo "$f4  E::::::::zt33L $f3@EEEtttt::::z3F        ${f1}WM: ${f7}$wm"
 echo "$f4 {3=*^\`\`\`'*4E3) $f3;EEEtttt:::::tZ\`        ${f1}WM Theme: ${f7}$theme"
 echo "$f4             \` $f3:EEEEtttt::::z7          ${f1}Font: ${f7}$font"
-echo "$f3                 $f3'VEzjt:;;z>*\`"
+echo "$f3                 $f3'VEzjt:;;z>*\`${f7}"
 
 # EOF

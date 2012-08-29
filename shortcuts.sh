@@ -14,3 +14,5 @@ function cd() {
 }
 
 alias cwd='cd "$(cat ~/.cwd)"'
+alias apt-cyg='apt-cyg -m http://cygwin.mirrors.pair.com/'
+alias apt-cygports='apt-cyg -m ftp://sourceware.org/pub/cygwinports/'
