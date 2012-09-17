@@ -5,7 +5,7 @@ alias xcode="cd /x/code"
 alias server="start http://localhost:8000 && python -m SimpleHTTPServer"
 alias serverstack="compass watch & coffee -wc -o js src/ & python -m SimpleHTTPServer & start http://localhost:8000 &"
 alias subl_packages='cd /c/Users/speilberg0/AppData/Roaming/Sublime\ Text\ 2/Packages'
-alias php="/c/wamp/bin/php/php5.3.13/php"
+alias php="/c/wamp/bin/php/php5.4.7/php"
 
 # overload vanilla cd to remember last directory for shell relaunch
 function cd() {
@@ -16,3 +16,5 @@ function cd() {
 alias cwd='cd "$(cat ~/.cwd)"'
 alias apt-cyg='apt-cyg -m http://cygwin.mirrors.pair.com/'
 alias apt-cygports='apt-cyg -m ftp://sourceware.org/pub/cygwinports/'
+alias apt-get='apt-cyg'
+alias php-cs-fixer='php C:/cygwin/bin/php-cs-fixer'

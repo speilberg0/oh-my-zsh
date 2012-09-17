@@ -7,7 +7,7 @@ elif  [[ $('uname') == 'Darwin' ]]; then
 	alias st='/Applications/Sublime\ Text\ 2.app/Contents/SharedSupport/bin/subl'
 elif  [[ $('uname') == *CYGWIN_NT* ]]; then
 	function st() {
-		/c/Program\ Files/Sublime\ Text\ 2/sublime_text $(cygpath -aw $@) &;
+		/c/Program\ Files/Sublime\ Text\ 2/sublime_text $(cygpath -aw $@) &!;
 	}
 fi
 alias stt='st .'

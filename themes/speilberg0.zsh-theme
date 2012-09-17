@@ -58,10 +58,25 @@ T="${(%):-⮂ %n@%m }"
 # get filler dashes for middle
 ((TERMWIDTH = ${COLUMNS} - ${#D} - ${#T} - 1 ))
 # get bar from script output
-BAR=`~/.oh-my-zsh/bar.py $TERMWIDTH`
+# BAR=`~/.oh-my-zsh/bar.py $TERMWIDTH`
+BAR="${$(printf "%${TERMWIDTH}s" "")// /-}"
+
+test() {
+    D="${(%):- %D{%Y-%m-%e ⮀ %T ⮀}"
+    T="${(%):-⮂ %n@%m }"
+    E=""
+    if [ -n "$_OLD_VIRTUAL_PS1" ] ; then
+        E="(`basename \"$VIRTUAL_ENV\"`)"
+    fi
+    # get filler dashes for middle
+    ((TERMWIDTH = ${COLUMNS} - ${#E} - ${#D} - ${#T} - 1 ))
+    # get bar from script output
+    # BAR=`~/.oh-my-zsh/bar.py $TERMWIDTH`
+    echo "${$(printf "%${TERMWIDTH}s" "")// /-}"
+}
 
 
-PROMPT='%{$SP_BG_DGRAY%}%{$SP_FG_LYELLOW%} %D{%Y-%m-%e} %{$SP_FG_DGRAY%}%{$SP_BG_LYELLOW%}⮀ %D{%T} %{$reset_color%}%{$SP_FG_LYELLOW%}⮀%{$reset_color%}$FG[237]$BAR%{$reset_color%}$SP_FG_DGRAY⮂%{$SP_BG_DGRAY$SP_FG_LRED%} %n@%m %{$reset_color%}
+PROMPT='%{$SP_BG_DGRAY%}%{$SP_FG_LYELLOW%} %D{%Y-%m-%e} %{$SP_FG_DGRAY%}%{$SP_BG_LYELLOW%}⮀ %D{%T} %{$reset_color%}%{$SP_FG_LYELLOW%}⮀%{$reset_color%}$FG[237]$(test)%{$reset_color%}$SP_FG_DGRAY⮂%{$SP_BG_DGRAY$SP_FG_LRED%} %n@%m %{$reset_color%}
 $SP_FG_BLUE$SP_BG_DGRAY%~ $(git_prompt_info)$SP_FG_LPURPLE%(!.#.»)%{$reset_color%}$SP_FG_DGRAY⮀%{$reset_color%} '
 PROMPT2='%{$SP_FG_LRED%}\ %{$reset_color%}'
 
