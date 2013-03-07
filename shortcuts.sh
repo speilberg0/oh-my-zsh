@@ -28,3 +28,4 @@ alias -s net=chrome
 alias -s org=chrome
 hash -d subl_packs=/c/Users/speilberg0/AppData/Roaming/Sublime\ Text\ 2/Packages
 alias py=/c/Python27/python
+alias reboot_router='curl --user admin:Omn1cron1337 http://192.168.1.1/setup.cgi\?todo\=reboot'
